@@ -1,0 +1,24 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agent-project-compiler",
+  "version": "2.36.1",
+  "description": "Agent Project Compiler (APC): compile ideas, interviews, files, references, and research into durable provider-neutral project authorities using one always-active orchestrator kernel with material-trigger JIT routing.",
+  "author": {
+    "name": "meowztho"
+  },
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Agent Project Compiler",
+        "shortDescription": "Compile durable project specs",
+        "longDescription": "Compile product intent and evidence into durable, provider-neutral project authorities. Uses one canonical APC orchestrator kernel, material-trigger JIT references, context-freshness recovery, Fresh-Agent Reconstruction, and optional companion Core-First governance when installed.",
+        "developerName": "Phi-Computers Farrnbacher",
+        "category": "Productivity",
+        "capabilities": [
+          "Interactive"
+        ],
+        "defaultPrompt": []
+      }
+    }
+  }
+}

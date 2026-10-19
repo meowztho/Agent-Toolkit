@@ -1,0 +1,969 @@
+{
+  "skill_name": "core-first-extension-architecture",
+  "schema_version": 3,
+  "change_taxonomy": [
+    "DATA_OR_ASSET",
+    "VALUE_MODIFIER",
+    "CONFIG_OVERRIDE",
+    "SLOT_SUBSTITUTION",
+    "PROVIDER_SUBSTITUTION",
+    "COMPOSE_EXISTING_CAPABILITY",
+    "ADD_REUSABLE_MODULE",
+    "EXTEND_EXISTING_CAPABILITY",
+    "NEW_REUSABLE_CAPABILITY",
+    "NEW_ADAPTER_OR_PROVIDER",
+    "NEW_EXTENSION_POINT",
+    "EXTERNAL_CONTENT_PACKAGE",
+    "EXTERNAL_EXECUTABLE_EXTENSION",
+    "CORE_RULE_CHANGE",
+    "EXPLICIT_ONE_OFF_EXCEPTION"
+  ],
+  "evals": [
+    {
+      "id": "greenfield-scheduling-saas",
+      "prompt": "We are starting a small appointment-booking SaaS. Design the architecture so future payment providers and notification channels can be added.",
+      "expected_output": "Start with responsibility discovery and identify durable owners such as booking, payments and notifications. Define reusable provider capabilities only where needed. Do not start by building a generic plugin platform.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": null,
+        "must_reuse": [],
+        "must_not_create": [
+          "generic plugin platform without a concrete need"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "responsibility boundaries and exclusions where material"
+        ]
+      }
+    },
+    {
+      "id": "second-payment-provider",
+      "prompt": "Checkout already supports Stripe. Add Adyen and leave room for more providers.",
+      "expected_output": "Classify as NEW_ADAPTER_OR_PROVIDER under the existing Payments owner/capability; preserve canonical payment/order ownership and canonical PaymentResult semantics; avoid provider-specific checkout business rules.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": "NEW_ADAPTER_OR_PROVIDER",
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "payments",
+        "must_reuse": [
+          "existing payment capability/contract",
+          "canonical payment result semantics"
+        ],
+        "must_not_create": [
+          "provider-specific checkout business-rule owner"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "second-provider contract reuse"
+        ]
+      }
+    },
+    {
+      "id": "builder-import-convergence",
+      "prompt": "Users can create report templates in the UI and we also want JSON import. Both must behave exactly like built-in templates.",
+      "expected_output": "Converge UI authoring, import, and built-in templates on one canonical TemplateDefinition/schema, validation and owner/runtime path; no builder/import-only business logic.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": null,
+        "allowed_classifications": [
+          "NEW_ADAPTER_OR_PROVIDER",
+          "COMPOSE_EXISTING_CAPABILITY"
+        ],
+        "forbidden_classifications": [],
+        "expected_owner": "template/report owner",
+        "must_reuse": [
+          "canonical TemplateDefinition/schema",
+          "canonical validation and owner path"
+        ],
+        "must_not_create": [
+          "builder-only runtime",
+          "import-only business logic"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "producer convergence"
+        ]
+      }
+    },
+    {
+      "id": "config-not-capability",
+      "prompt": "One customer needs an API timeout of 20 seconds instead of the default 10 seconds.",
+      "expected_output": "Prefer scoped configuration/data or override. Do not create a CustomerTimeoutCapability, plugin, or new system.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": null,
+        "allowed_classifications": [
+          "DATA_OR_ASSET",
+          "CONFIG_OVERRIDE"
+        ],
+        "forbidden_classifications": [
+          "NEW_REUSABLE_CAPABILITY",
+          "NEW_EXTENSION_POINT",
+          "EXPLICIT_ONE_OFF_EXCEPTION"
+        ],
+        "expected_owner": "existing request/provider owner",
+        "must_reuse": [
+          "existing configuration/profile path"
+        ],
+        "must_not_create": [
+          "CustomerTimeoutCapability",
+          "new plugin/system for a single value"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "scoped configuration behavior"
+        ]
+      }
+    },
+    {
+      "id": "module-not-system",
+      "prompt": "Add another retry policy with different delays to the existing delivery subsystem.",
+      "expected_output": "Prefer ADD_REUSABLE_MODULE under the existing retry/delivery capability rather than a new master system.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": "ADD_REUSABLE_MODULE",
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "retry/delivery",
+        "must_reuse": [
+          "existing retry/delivery capability"
+        ],
+        "must_not_create": [
+          "new master system for one retry policy"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "module reuse behind existing contract"
+        ]
+      }
+    },
+    {
+      "id": "duplicate-discount-logic",
+      "prompt": "Three screens calculate the same discount independently and have drifted apart. Fix it.",
+      "expected_output": "Find the canonical pricing/discount owner, move the universal rule there, make screens consumers of the result/contract, remove parallel rule copies, and re-test visible behavior.",
+      "assertions": {
+        "task_type": "ARCHITECTURE_REPAIR",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "pricing/discount",
+        "must_reuse": [
+          "canonical pricing/discount owner"
+        ],
+        "must_not_create": [
+          "screen-local discount rules",
+          "new parallel discount owner"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "duplicate rule removal",
+          "visible behavior re-test"
+        ]
+      }
+    },
+    {
+      "id": "core-rule-change",
+      "prompt": "All invoices must use a new rounding rule from now on.",
+      "expected_output": "Classify as CORE_RULE_CHANGE, identify the canonical invoice/pricing owner, assess affected consumers/contracts and compatibility/migration impact, update canonical authority and focused acceptance evidence rather than patching callers.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": "CORE_RULE_CHANGE",
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "invoice/pricing",
+        "must_reuse": [],
+        "must_not_create": [
+          "caller-local rounding patches"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "impact assessment",
+          "authority update",
+          "focused acceptance evidence"
+        ]
+      }
+    },
+    {
+      "id": "one-off-abuse",
+      "prompt": "A customer asks for behavior already expressible by an existing policy profile. Create a one-off exception to make it faster.",
+      "expected_output": "Reject the one-off shortcut; use existing configuration/composition. EXPLICIT_ONE_OFF_EXCEPTION requires a genuine semantic gap and explicit justification.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": null,
+        "allowed_classifications": [
+          "CONFIG_OVERRIDE",
+          "COMPOSE_EXISTING_CAPABILITY",
+          "DATA_OR_ASSET"
+        ],
+        "forbidden_classifications": [
+          "EXPLICIT_ONE_OFF_EXCEPTION"
+        ],
+        "expected_owner": "existing policy owner",
+        "must_reuse": [
+          "existing policy/profile"
+        ],
+        "must_not_create": [
+          "one-off architecture bypass"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "existing policy expresses requested behavior"
+        ]
+      }
+    },
+    {
+      "id": "distributed-provider-failure",
+      "prompt": "A remote payment provider occasionally times out and retries may duplicate charges.",
+      "expected_output": "Keep payment ownership canonical and activate the distributed/asynchronous concerns: timeout, retry, idempotency, duplicate handling, failure propagation and correlation. Do not introduce an unrelated global event bus.",
+      "assertions": {
+        "task_type": "ARCHITECTURE_REVIEW",
+        "expected_classification": null,
+        "allowed_classifications": [
+          "EXTEND_EXISTING_CAPABILITY",
+          "CONFIG_OVERRIDE"
+        ],
+        "forbidden_classifications": [],
+        "expected_owner": "payments",
+        "must_reuse": [
+          "canonical payment owner/contract"
+        ],
+        "must_not_create": [
+          "unrelated global event bus"
+        ],
+        "conditional_profiles": [
+          "distributed/asynchronous"
+        ],
+        "required_evidence": [
+          "idempotency behavior",
+          "timeout/retry behavior",
+          "duplicate handling"
+        ]
+      }
+    },
+    {
+      "id": "external-executable-formatter",
+      "prompt": "Allow third-party executable formatter plugins to run inside the product.",
+      "expected_output": "Treat as EXTERNAL_EXECUTABLE_EXTENSION; keep formatter/output ownership behind an explicit contract, prefer non-code extensions if sufficient, and define trust/permissions/isolation/failure containment instead of granting foreign-state access.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": "EXTERNAL_EXECUTABLE_EXTENSION",
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "formatter/output",
+        "must_reuse": [
+          "formatter/output capability contract"
+        ],
+        "must_not_create": [
+          "foreign-state write path",
+          "unrestricted executable authority"
+        ],
+        "conditional_profiles": [
+          "untrusted executable extension"
+        ],
+        "required_evidence": [
+          "permission/isolation boundary",
+          "failure containment"
+        ]
+      }
+    },
+    {
+      "id": "definition-instance-isolation",
+      "prompt": "Two workflow runs share the same WorkflowDefinition but one run's temporary state is appearing in the other.",
+      "expected_output": "Separate durable definition/profile from per-run runtime instance/scoped mutable state and fix the shared-state ownership bug at the canonical runtime boundary.",
+      "assertions": {
+        "task_type": "DEBUG_TRACE",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "workflow runtime",
+        "must_reuse": [
+          "shared immutable/durable WorkflowDefinition"
+        ],
+        "must_not_create": [
+          "run-specific mutable state on shared definition"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "state isolation across two workflow runs"
+        ]
+      }
+    },
+    {
+      "id": "negative-local-fix",
+      "prompt": "Change the label 'Save' to 'Save file' in a small desktop tool.",
+      "expected_output": "Make the local content change. Do not introduce extension/plugin architecture.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": "DATA_OR_ASSET",
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": null,
+        "must_reuse": [],
+        "must_not_create": [
+          "plugin loader",
+          "registry",
+          "new capability",
+          "extension point"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "label changed"
+        ]
+      }
+    },
+    {
+      "id": "new-reusable-capability",
+      "prompt": "A desktop drone simulator has ground movement. Add reusable flight that future drone types can share.",
+      "expected_output": "Create/reuse a Flight capability contract under the canonical movement owner; consumers compose it. Do not add drone-local flight cores.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": "NEW_REUSABLE_CAPABILITY",
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "movement",
+        "must_reuse": [
+          "movement owner"
+        ],
+        "must_not_create": [
+          "drone-local flight cores"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "second-consumer design/contract proof"
+        ]
+      }
+    },
+    {
+      "id": "compose-existing-capability",
+      "prompt": "A second report screen needs the PDF export capability that another screen already uses.",
+      "expected_output": "Compose the existing exporter capability/module into the new consumer. Do not duplicate PDF export logic.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": "COMPOSE_EXISTING_CAPABILITY",
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "export",
+        "must_reuse": [
+          "existing exporter capability/module"
+        ],
+        "must_not_create": [
+          "duplicate PDF export logic"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "same canonical exporter path"
+        ]
+      }
+    },
+    {
+      "id": "modifier-propagation",
+      "prompt": "Base retry delay is 5s. One workflow adds +3s. Later base becomes 7s; what should happen?",
+      "expected_output": "Keep a relative +3s modifier so resolved delay becomes 10s after the base change. Do not copy resolved 8s as a local permanent value.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": "VALUE_MODIFIER",
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "retry/delivery",
+        "must_reuse": [
+          "base retry value plus relative modifier"
+        ],
+        "must_not_create": [
+          "copied resolved permanent value"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "base-change propagation"
+        ]
+      }
+    },
+    {
+      "id": "slot-substitution",
+      "prompt": "A notification workflow should use SMS instead of Email in one declared channel slot.",
+      "expected_output": "Substitute the module at the existing channel slot while preserving notification ownership. Do not fork the whole notification workflow.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": "SLOT_SUBSTITUTION",
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "notifications",
+        "must_reuse": [
+          "existing notification channel slot and owner"
+        ],
+        "must_not_create": [
+          "forked notification workflow"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "same owner/contract"
+        ]
+      }
+    },
+    {
+      "id": "provider-substitution",
+      "prompt": "Switch one environment from S3 to Azure Blob behind the existing storage contract.",
+      "expected_output": "Select another provider behind the same storage capability contract. Do not duplicate storage business semantics in callers.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": "PROVIDER_SUBSTITUTION",
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "storage",
+        "must_reuse": [
+          "existing storage capability contract"
+        ],
+        "must_not_create": [
+          "storage business semantics in callers"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "provider contract compatibility"
+        ]
+      }
+    },
+    {
+      "id": "second-consumer-no-speculative-feature",
+      "prompt": "Only one current consumer uses a new reusable parser seam. Prove it is not consumer-specific without shipping another feature.",
+      "expected_output": "Use an adversarial second scenario or isolated contract fixture to challenge the seam. Do not implement a fake production consumer solely for proof.",
+      "assertions": {
+        "task_type": "REUSE_PROOF",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "parsing",
+        "must_reuse": [
+          "existing parser seam"
+        ],
+        "must_not_create": [
+          "fake production consumer solely for proof"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "isolated/adversarial second-case proof"
+        ]
+      }
+    },
+    {
+      "id": "reverse-debug-owner",
+      "prompt": "A CSV importer shows correct preview but saved totals are wrong. Trace the correct repair path.",
+      "expected_output": "Trace observable -> ingest flow -> importer -> canonical transaction contract/owner -> implementation anchor; fix root cause and rerun forward evidence. Do not patch the preview UI or add importer-only totals logic.",
+      "assertions": {
+        "task_type": "DEBUG_TRACE",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "transaction/import",
+        "must_reuse": [
+          "canonical transaction contract/owner"
+        ],
+        "must_not_create": [
+          "preview-only patch",
+          "importer-only totals logic"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "reverse trace",
+          "forward re-test"
+        ]
+      }
+    },
+    {
+      "id": "external-origin-no-authority",
+      "prompt": "A marketplace extension asks to write order status directly for speed.",
+      "expected_output": "Reject direct foreign-state mutation and route through the canonical order owner contract. External origin grants no extra authority.",
+      "assertions": {
+        "task_type": "BOUNDARY_REVIEW",
+        "expected_classification": null,
+        "allowed_classifications": [
+          "EXTERNAL_EXECUTABLE_EXTENSION"
+        ],
+        "forbidden_classifications": [],
+        "expected_owner": "orders",
+        "must_reuse": [
+          "canonical order owner contract"
+        ],
+        "must_not_create": [
+          "direct foreign-state mutation"
+        ],
+        "conditional_profiles": [
+          "untrusted executable extension"
+        ],
+        "required_evidence": [
+          "foreign-write rejection"
+        ]
+      }
+    },
+    {
+      "id": "polyglot-contract-profile",
+      "prompt": "Python and Rust services must implement the same durable public capability contract.",
+      "expected_output": "Activate the polyglot/cross-runtime profile and preserve one canonical capability contract. Use a language-neutral contract only if the boundary requires it; do not impose a new global plugin framework.",
+      "assertions": {
+        "task_type": "CONTRACT_REVIEW",
+        "expected_classification": null,
+        "allowed_classifications": [
+          "EXTEND_EXISTING_CAPABILITY",
+          "NEW_ADAPTER_OR_PROVIDER"
+        ],
+        "forbidden_classifications": [],
+        "expected_owner": "existing capability owner",
+        "must_reuse": [
+          "one canonical capability contract"
+        ],
+        "must_not_create": [
+          "global plugin framework solely for cross-language support"
+        ],
+        "conditional_profiles": [
+          "polyglot/cross-runtime"
+        ],
+        "required_evidence": [
+          "cross-runtime contract conformance"
+        ]
+      }
+    },
+    {
+      "id": "owner-resolution-is-responsibility-relative",
+      "prompt": "MegaService is 2,000 lines and currently contains persistence, logging, HTTP calls, and user validation. Audit its Core-First ownership. Do not assume new classes are required.",
+      "expected_output": "Decompose the four responsibilities first. Treat MegaService as a current carrier/implementation anchor that may contain several responsibilities, not as proof of one canonical owner or proof that four new Master Systems are required. Resolve each responsibility against existing project owners/capabilities; leave unsupported ownership unresolved.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": null,
+        "must_reuse": [
+          "existing owners/capabilities where supported"
+        ],
+        "must_not_create": [
+          "one new Master System per method group based only on class size",
+          "owner inferred from class boundary"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "named responsibilities",
+          "current carrier versus canonical-owner distinction"
+        ]
+      }
+    },
+    {
+      "id": "parallel-owner-vs-provider-variants",
+      "prompt": "UserStore and UserRepository both Save/Get users and different consumers call either directly. In a second variant, SqlUserRepository and CachedUserRepository implement one IUserRepository contract and exactly one provider is selected per context by the canonical persistence owner. Compare the two architectures.",
+      "expected_output": "The first variant is a parallel-owner conflict for one persistence responsibility if both are independent active authorities. The second can be legitimate provider substitution behind one canonical capability/owner contract. Multiple implementations alone do not imply multiple owners or multiple capabilities.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "one canonical user-persistence responsibility owner",
+        "must_reuse": [
+          "canonical persistence capability/contract where present"
+        ],
+        "must_not_create": [
+          "third owner to wrap both competing authorities",
+          "separate capability solely because provider implementations differ"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "consumer call path",
+          "authoritative write/decision path",
+          "provider selection semantics"
+        ]
+      }
+    },
+    {
+      "id": "data-profile-does-not-own-shared-behavior",
+      "prompt": "Three controllers duplicate the same email/password/age validation logic. A UserValidationProfile centralizes the thresholds and patterns, but each controller still performs the validation rules itself. Is Core-First satisfied?",
+      "expected_output": "No. The profile can own declarative values/definitions, but shared semantic validation behavior is still duplicated across consumers. Reuse or add the smallest canonical validation behavior path under the appropriate existing owner/capability; do not require a heavyweight new service if a small reusable module is sufficient.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": null,
+        "allowed_classifications": [
+          "ADD_REUSABLE_MODULE",
+          "EXTEND_EXISTING_CAPABILITY",
+          "NEW_REUSABLE_CAPABILITY"
+        ],
+        "forbidden_classifications": [],
+        "expected_owner": "appropriate existing user/domain owner or explicitly justified capability owner",
+        "must_reuse": [
+          "central validation definitions",
+          "one reusable semantic validation path"
+        ],
+        "must_not_create": [
+          "consumer-local duplicate validation semantics",
+          "new service solely because values were centralized"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "shared rule execution converges, not only shared values"
+        ]
+      }
+    },
+    {
+      "id": "capability-does-not-require-two-implementations",
+      "prompt": "A reusable UserValidation semantic contract is consumed by several workflows but currently has only one implementation. A reviewer says it cannot be a capability until a second implementation exists. Evaluate that claim.",
+      "expected_output": "Reject the implementation-count rule. A coherent reusable semantic contract can be a capability with one implementation. A second implementation is useful evidence for provider variation, not a prerequisite for capability identity.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "owner of the validation responsibility",
+        "must_reuse": [
+          "semantic contract if genuinely reusable"
+        ],
+        "must_not_create": [
+          "fake second implementation solely to justify the capability"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "semantic contract and real consumers"
+        ]
+      }
+    },
+    {
+      "id": "multiple-implementations-do-not-imply-multiple-capabilities",
+      "prompt": "MemoryStorage, FileStorage, and PostgresStorage all satisfy the same storage semantics. Should each become its own capability because the implementations differ?",
+      "expected_output": "No. Keep one storage capability contract when semantics are the same and model the concrete implementations as modules/providers. Create separate capabilities only when the semantic contracts genuinely differ.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "storage responsibility owner",
+        "must_reuse": [
+          "one coherent storage capability contract"
+        ],
+        "must_not_create": [
+          "one capability per implementation"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "contract semantics across implementations"
+        ]
+      }
+    },
+    {
+      "id": "role-by-semantics-not-symbol-name",
+      "prompt": "The repository contains PaymentManager, PaymentService, PaymentFacade, PaymentFactory, IPaymentProvider, and PaymentController. Determine which is the payment owner from these names alone.",
+      "expected_output": "Do not assign or reject ownership from names. Inspect responsibility, project authority, authoritative decisions/writes, contracts, runtime/data flow, and consumer/provider relationships. If those facts are unavailable, ownership remains unresolved.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": null,
+        "must_reuse": [],
+        "must_not_create": [
+          "owner conclusion from naming convention alone"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "responsibility",
+          "authority",
+          "decision/write path",
+          "contract/runtime flow"
+        ]
+      }
+    },
+    {
+      "id": "ownership-gap-remains-unresolved-until-supported",
+      "prompt": "Repeated pricing policy exists in several consumers, but project authorities and runtime evidence do not establish which existing system should own it. The architecture map has an empty owner field. Complete the map.",
+      "expected_output": "Keep the ownership gap explicit while investigating existing responsibility/capability boundaries and the smallest semantic change. Do not invent PricingManager/PricingService merely to fill the diagram. Create a new owner/capability only after evidence establishes a genuinely missing reusable responsibility/contract.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": null,
+        "must_reuse": [
+          "existing owner/capability search"
+        ],
+        "must_not_create": [
+          "invented owner merely to complete the map"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "explicit unresolved gap",
+          "evidence threshold before new owner"
+        ]
+      }
+    },
+    {
+      "id": "current-carrier-is-not-automatically-canonical-owner",
+      "prompt": "LegacyController currently contains the only implementation of a discount rule, but the project authority says pricing policy belongs to the Pricing responsibility and the controller should only compose it. What is LegacyController's role?",
+      "expected_output": "Treat LegacyController as the current implementation anchor/carrier of misplaced behavior, not as the canonical pricing owner. Route the correction to the documented Pricing owner/capability and remove the consumer-local rule path.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": null,
+        "allowed_classifications": [
+          "COMPOSE_EXISTING_CAPABILITY",
+          "EXTEND_EXISTING_CAPABILITY"
+        ],
+        "forbidden_classifications": [
+          "NEW_REUSABLE_CAPABILITY"
+        ],
+        "expected_owner": "Pricing responsibility owner",
+        "must_reuse": [
+          "project authority",
+          "existing Pricing owner/capability"
+        ],
+        "must_not_create": [
+          "LegacyController as canonical owner solely because code currently lives there"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "authority-to-runtime correction",
+          "consumer-local path removed"
+        ]
+      }
+    },
+    {
+      "id": "owner-does-not-require-second-consumer",
+      "prompt": "A SecurityPolicy owner has one real consumer and one implementation. A reviewer says it cannot be a canonical owner until a second consumer or adversarial mock consumer exists. Evaluate the claim.",
+      "expected_output": "Reject the claim. Owner existence follows from the named responsibility and authoritative boundary, not consumer count. A second-consumer challenge is relevant only if semantic reusability of a capability/seam is being claimed.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "SecurityPolicy responsibility owner if supported by authority/runtime evidence",
+        "must_reuse": [
+          "responsibility and authoritative decision boundary"
+        ],
+        "must_not_create": [
+          "fake second consumer solely to admit an owner"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "owner-existence versus reuse-proof distinction"
+        ]
+      }
+    },
+    {
+      "id": "shared-lifecycle-does-not-merge-responsibilities",
+      "prompt": "MatchSession and ScoreAuthority both begin at match start and end at match teardown. They make different authoritative decisions. Must they be one owner because their lifecycle scopes are identical?",
+      "expected_output": "No. Lifecycle overlap is evidence, not an ownership criterion. Keep distinct canonical owners when the named responsibilities and decision authorities are distinct; do not merge them solely because lifecycle boundaries match.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": "separate owners when responsibility evidence supports it",
+        "must_reuse": [],
+        "must_not_create": [
+          "ownership conclusion from lifecycle overlap alone"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "named responsibilities",
+          "authoritative decisions"
+        ]
+      }
+    },
+    {
+      "id": "responsibility-owner-precedes-interface-design",
+      "prompt": "A new Spectator feature is requested. An architect starts by defining ISpectatorViewSource and then uses that interface as proof that a new Spectator owner exists. Apply Core-First.",
+      "expected_output": "Reverse the reasoning. Establish the exact responsibility and canonical owner boundary first, after reuse/extension checks; only then define the smallest capability contract if needed. A capability contract need not be a language-level interface, and an invented interface cannot establish ownership.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": null,
+        "must_reuse": [
+          "Responsibility → Owner → Capability Contract order"
+        ],
+        "must_not_create": [
+          "owner inferred from invented interface",
+          "language-level interface solely to prove capability"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "existing owner/capability search",
+          "responsibility boundary before contract"
+        ]
+      }
+    },
+    {
+      "id": "gap-resolution-gate-before-new-owner",
+      "prompt": "A readiness decision is missing from the architecture map. Several existing capabilities provide partial facts, and an existing pre-match/session owner might be able to compose them, but this has not been investigated. Should a ReadinessCoordinator be declared now?",
+      "expected_output": "No. Gap detection does not authorize owner creation. Test existing owner/capability extension or composition and smaller data/module/provider paths first. Until those are ruled out and a distinct canonical responsibility boundary is evidenced, keep the ownership gap unresolved.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": null,
+        "must_reuse": [
+          "existing owner/capability search",
+          "composition/extension before new owner"
+        ],
+        "must_not_create": [
+          "ReadinessCoordinator before gap-resolution evidence"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "explicit unresolved gap",
+          "rejected existing-owner paths before new owner"
+        ]
+      }
+    },
+    {
+      "id": "foreign-write-is-not-automatically-parallel-owner",
+      "prompt": "FighterState is documented and enforced as the canonical HP owner. CombatResolver writes HP through FighterState, but BuffSystem directly mutates the HP field. Does BuffSystem automatically become a second canonical owner?",
+      "expected_output": "No. The direct mutation is an unauthorized foreign-write/bypass of the established owner unless evidence shows BuffSystem independently claims authoritative ownership. Route the write through FighterState; do not invent a parallel-owner classification merely because there are two write paths.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": null,
+        "allowed_classifications": [
+          "COMPOSE_EXISTING_CAPABILITY",
+          "EXTEND_EXISTING_CAPABILITY"
+        ],
+        "forbidden_classifications": [
+          "NEW_REUSABLE_CAPABILITY"
+        ],
+        "expected_owner": "FighterState HP responsibility owner",
+        "must_reuse": [
+          "existing FighterState owner path"
+        ],
+        "must_not_create": [
+          "BuffSystem as second owner from write-path count alone"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "established owner authority",
+          "foreign write path removed"
+        ]
+      }
+    },
+    {
+      "id": "reuse-existing-architecture-authority-before-new-ownership-doc",
+      "prompt": "SYSTEM_MAP.yaml and CAPABILITY_GRAPH.yaml are canonical project authorities. A new justified owner is added. Should the agent also create contracts/OWNERSHIP.md as a new authority by default?",
+      "expected_output": "No. Update the existing canonical architecture authorities. Add another durable artifact only if the project actually needs and declares that distinct authority; do not create a parallel ownership map merely because a new owner was introduced.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": null,
+        "allowed_classifications": [
+          "NEW_REUSABLE_CAPABILITY",
+          "EXTEND_EXISTING_CAPABILITY"
+        ],
+        "forbidden_classifications": [],
+        "expected_owner": null,
+        "must_reuse": [
+          "SYSTEM_MAP.yaml",
+          "CAPABILITY_GRAPH.yaml"
+        ],
+        "must_not_create": [
+          "parallel OWNERSHIP.md authority by default"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "existing project authority updated"
+        ]
+      }
+    },
+    {
+      "id": "broad-product-responsibility-coverage-challenge",
+      "prompt": "A team asks for the architecture of a small multi-user chat product. The draft system map covers Identity, Workspaces, Channels, Message History, and Notifications, but never considers who may join a workspace or access a channel. Apply Core-First before accepting the map.",
+      "expected_output": "Challenge the broad responsibility coverage. A competent domain expert would flag membership/access responsibility as an ordinary material gap. Surface that responsibility and then determine whether an existing owner covers it or whether ownership remains unresolved; do not jump straight to a new service or interface.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": null,
+        "must_reuse": [
+          "responsibility discovery before owner resolution",
+          "existing owner/capability search"
+        ],
+        "must_not_create": [
+          "new MembershipService solely because a gap was noticed",
+          "interface used to manufacture an owner"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "important ordinary responsibility surfaced before finalizing the responsibility model"
+        ]
+      }
+    },
+    {
+      "id": "domain-expectation-is-hypothesis-not-project-authority",
+      "prompt": "Design a simple appointment-booking product. Industry products often take payments, but the user explicitly states that all appointments are free and payment handling is out of scope. Should Core-First add a Payments responsibility because a domain expert might expect one?",
+      "expected_output": "No. Domain expectations are discovery hypotheses, not project authority. Respect the explicit product decision and do not add Payments. Continue coverage reasoning only for material responsibilities not contradicted or excluded by project authority.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": null,
+        "must_reuse": [
+          "explicit user/project decision"
+        ],
+        "must_not_create": [
+          "Payments responsibility",
+          "payment capability from industry convention alone"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "explicit exclusion outranks domain expectation"
+        ]
+      }
+    },
+    {
+      "id": "explicitly-deferred-responsibility-is-not-reintroduced",
+      "prompt": "A peer-to-peer marketplace project explicitly defers checkout and payment until a later release; the current scope is listings plus buyer-seller contact. During a responsibility coverage check, should the agent reintroduce Payment/Checkout as current work because marketplaces commonly have it?",
+      "expected_output": "No. Recognize the responsibility as already considered and explicitly deferred. Do not reopen or implement it unless scope/authority changes. The coverage challenge prevents silent omission; it does not erase explicit deferrals.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": null,
+        "must_reuse": [
+          "existing deferral/current scope authority"
+        ],
+        "must_not_create": [
+          "current Payment/Checkout workstream",
+          "new owner for a deferred responsibility"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "deferred responsibility remains explicit rather than treated as missing"
+        ]
+      }
+    },
+    {
+      "id": "narrow-local-task-does-not-trigger-whole-product-sweep",
+      "prompt": "In an established reporting application, fix a CSV exporter bug where semicolon-delimited output is incorrectly emitted with commas. Ownership of export formatting is already clear. Apply Core-First.",
+      "expected_output": "Treat this as a narrow local change under the existing export owner/capability. Do not perform a whole-product responsibility inventory merely because the responsibility coverage challenge exists; inspect only the material local owner/path and verify the delimiter behavior.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": null,
+        "allowed_classifications": [
+          "DATA_OR_ASSET",
+          "CONFIG_OVERRIDE",
+          "EXTEND_EXISTING_CAPABILITY"
+        ],
+        "forbidden_classifications": [
+          "NEW_REUSABLE_CAPABILITY",
+          "NEW_EXTENSION_POINT"
+        ],
+        "expected_owner": "existing export/output formatting owner",
+        "must_reuse": [
+          "existing exporter/formatting capability"
+        ],
+        "must_not_create": [
+          "whole-product responsibility reconstruction",
+          "new system for delimiter behavior"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "focused delimiter behavior verification"
+        ]
+      }
+    }
+  ]
+}

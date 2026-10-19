@@ -1,0 +1,7 @@
+interface:
+  display_name: Core-First Verifier
+  short_description: Fresh two-phase Core-First conformance check
+  default_prompt: Use $core-first-verifier to freeze the expected Core-First owner/path/classification
+    before reviewing the change evidence, then compare the implementation read-only.
+policy:
+  allow_implicit_invocation: false

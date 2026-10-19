@@ -1,0 +1,213 @@
+{
+  "skill_name": "observable-product-verification",
+  "schema_version": 1,
+  "evals": [
+    {
+      "id": "action-is-not-outcome",
+      "prompt": "A browser automation call reports that it dragged the volume slider successfully. No post-action value or visual state was observed.",
+      "expected": {
+        "status": "INCONCLUSIVE",
+        "must_reject": "successful action as product proof",
+        "required_next_evidence": "settled after state"
+      }
+    },
+    {
+      "id": "game-settled-state",
+      "prompt": "The player rises after jump input, but one second later falls through the floor. Determine the jump verification result.",
+      "expected": {
+        "status": "FAILED",
+        "finding": "TARGET_FAILURE_OR_COUPLED_REGRESSION",
+        "must_observe_settled_state": true
+      }
+    },
+    {
+      "id": "ambient-visible-defect",
+      "prompt": "While verifying a Save button, the same already-acquired screen clearly shows the required navigation title clipped. Save itself works.",
+      "expected": {
+        "must_report_clipped_title": true,
+        "must_not_auto_expand_write_scope": true,
+        "classification": "ADJACENT_DEFECT_UNLESS_SCREEN_WIDE_ACCEPTANCE"
+      }
+    },
+    {
+      "id": "cheap-adjacent-persistence",
+      "prompt": "A setting changes successfully and reopening the same settings panel is cheap. The requirement includes persistence.",
+      "expected": {
+        "must_reopen_and_verify": true,
+        "full_product_regression": false
+      }
+    },
+    {
+      "id": "missing-interaction-capability",
+      "prompt": "A native desktop workflow must be tested, but the current environment cannot launch or interact with the application. Static code inspection looks correct.",
+      "expected": {
+        "status": "INCONCLUSIVE",
+        "static_evidence_may_prove_narrower_claims": true,
+        "static_evidence_may_not_prove_user_workflow": true
+      }
+    },
+    {
+      "id": "route-existing-project-map",
+      "prompt": "Runtime verification finds that HP UI does not update. The project already provides a project index, system map, integration trace, and implementation anchors.",
+      "expected": {
+        "use_existing_route_first": true,
+        "validate_anchor_against_current_code": true,
+        "broad_search_only_on_contradiction_or_gap": true,
+        "create_new_qa_graph": false
+      }
+    },
+    {
+      "id": "internal-pure-function",
+      "prompt": "A pure internal parsing helper was refactored with unchanged contract and focused deterministic tests.",
+      "expected": {
+        "skill_should_not_be_forced": true
+      }
+    },
+    {
+      "id": "normal-path-not-private-shortcut",
+      "prompt": "A menu button is required to start a game. Calling the scene-loading function directly succeeds, but the menu was never exercised.",
+      "expected": {
+        "status": "INCONCLUSIVE",
+        "must_exercise_normal_product_path": true
+      }
+    },
+    {
+      "id": "material-raw-evidence-traceability",
+      "prompt": "A material UI workflow is VERIFIED with before and settled-after screenshots. No independent review is currently required.",
+      "expected": {
+        "retain_raw_evidence_traceability_through_completion_boundary": true,
+        "status_only_sufficient": false
+      }
+    },
+    {
+      "id": "reuse-existing-evidence-store",
+      "prompt": "The project already has a canonical Evidence/acceptance artifact store for runtime evidence.",
+      "expected": {
+        "use_existing_store": true,
+        "create_second_evidence_system": false
+      }
+    },
+    {
+      "id": "no-evidence-store-no-framework",
+      "prompt": "A small project has no persistent evidence store. A material runtime check produces screenshots in the current session/artifact workspace.",
+      "expected": {
+        "precise_current_artifact_references_acceptable": true,
+        "invent_repository_evidence_database": false
+      }
+    },
+    {
+      "id": "logs-pass-visible-layout-fails",
+      "prompt": "Runtime logs report that the new start screen loaded successfully. A current screenshot from the same run shows the screen is visibly distorted: controls overlap and the layout is misaligned.",
+      "expected": {
+        "logs_are_supporting_evidence_only": true,
+        "user_visible_claim_verified": false,
+        "status": "FAILED",
+        "must_report_visible_layout_failure": true
+      }
+    },
+    {
+      "id": "whole-visible-surface-is-evidence",
+      "prompt": "A current screenshot was captured to verify one Start button. The same screenshot also clearly shows clipped navigation, wrong spacing, and a missing required logo on the accepted start-screen surface.",
+      "expected": {
+        "inspect_only_target_button": false,
+        "inspect_whole_relevant_visible_surface": true,
+        "report_material_visible_contradictions": true,
+        "automatic_unrelated_write_scope_expansion": false
+      }
+    },
+    {
+      "id": "reuse-current-visual-snapshot",
+      "prompt": "A trustworthy current screenshot already proves the unchanged start-screen layout and logo placement. The agent now needs to cite those same unchanged visible facts again before any relevant visual/state change occurred.",
+      "expected": {
+        "new_screenshot_required": false,
+        "reuse_existing_snapshot": true,
+        "reason": "unchanged visible state already proven"
+      }
+    },
+    {
+      "id": "visual-change-invalidates-old-snapshot",
+      "prompt": "After screenshot A was captured, the agent changes the start-screen container/layout. It wants to use screenshot A as proof that the new layout is correct.",
+      "expected": {
+        "old_snapshot_valid_for_changed_layout": false,
+        "fresh_visual_evidence_required": true,
+        "inspect_whole_relevant_surface_again": true
+      }
+    },
+    {
+      "id": "static-screenshot-does-not-prove-interaction",
+      "prompt": "A screenshot shows a Settings button rendered correctly. No click or resulting navigation state was exercised, but the claim is that the button works and opens Settings.",
+      "expected": {
+        "screenshot_proves_visible_state": true,
+        "screenshot_proves_interaction": false,
+        "status": "INCONCLUSIVE",
+        "required_next_evidence": "normal action plus settled result"
+      }
+    },
+    {
+      "id": "correct-style-wrong-placement-fails",
+      "prompt": "The approved surface authority places the primary Start action centered below the title. The rendered button has exactly the correct color, typography, radius, and label but appears in a side panel.",
+      "expected": {
+        "style_tokens_alone_sufficient": false,
+        "placement_is_material": true,
+        "status": "FAILED",
+        "finding": "TARGET_FAILURE"
+      }
+    },
+    {
+      "id": "correct-components-wrong-composition-fails",
+      "prompt": "Every required start-screen component exists and is individually styled correctly, but the current screenshot materially contradicts the approved hierarchy and layout composition.",
+      "expected": {
+        "element_presence_sufficient": false,
+        "whole_surface_composition_required": true,
+        "status": "FAILED"
+      }
+    },
+    {
+      "id": "surface-authority-exact-plus-holistic",
+      "prompt": "A visual authority contains exact spacing/color constraints plus prose/reference guidance describing the intended hierarchy and composition.",
+      "expected": {
+        "verify_exact_specified_constraints": true,
+        "verify_holistic_specified_intent": true,
+        "ignore_prose_or_reference_context": false
+      }
+    },
+    {
+      "id": "relative-layout-verification-needs-no-invented-coordinates",
+      "prompt": "The authority specifies relative placement and hierarchy but no exact x/y coordinates. The rendered surface visibly matches that relative structure.",
+      "expected": {
+        "exact_coordinates_required": false,
+        "relative_structure_can_be_verified": true,
+        "invent_missing_precision": false
+      }
+    },
+    {
+      "id": "working-atlas-cannot-override-surface-authority",
+      "prompt": "The agent's generated HTML Working Atlas places Settings above Start, but the canonical project surface authority places Settings below Start.",
+      "expected": {
+        "working_atlas_is_authority": false,
+        "canonical_surface_authority_wins": true,
+        "verify_against_generated_mockup_instead": false
+      }
+    },
+    {
+      "id": "fresh-capture-does-not-prove-oracle-liveness",
+      "prompt": "A live game is demonstrably continuing to animate, but a screenshot tool reports successful new captures whose image content remains byte-identical across several seconds. The latest file has a fresh timestamp and looks plausible. The agent wants to use it as proof of the current rendered state.",
+      "expected": {
+        "fresh_artifact_alone_proves_current_state": false,
+        "must_establish_oracle_liveness": true,
+        "acceptable_method": "independent ongoing activity or controlled observable stimulus",
+        "use_as_current_visual_evidence_before_liveness": false,
+        "fallback_if_liveness_unavailable": "INCONCLUSIVE_OR_ALTERNATE_OBSERVATION_PATH"
+      }
+    },
+    {
+      "id": "identical-static-observations-do-not-prove-dead-oracle",
+      "prompt": "A legitimately static settings screen produces two byte-identical screenshots one second apart. No independent signal or controlled stimulus says the screen should have changed.",
+      "expected": {
+        "identical_samples_alone_prove_dead_oracle": false,
+        "must_invent_activity": false,
+        "liveness_check_required_only_if_freshness_is_material_and_staleness_is_plausible": true
+      }
+    }
+  ]
+}

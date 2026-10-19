@@ -1,0 +1,6 @@
+interface:
+  display_name: Observable Product Verification
+  short_description: Verify real outcomes against the whole required surface
+  default_prompt: Use $observable-product-verification on the real user/external surface. Treat logs as supporting evidence, compare the whole relevant visible surface to applicable project surface/design/layout authority, reuse current visual evidence until relevant change invalidates it, and do not infer interaction from a static image.
+policy:
+  allow_implicit_invocation: false

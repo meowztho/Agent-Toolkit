@@ -1,0 +1,6 @@
+interface:
+  display_name: Core-First Orchestration
+  short_description: Minimal-context JIT routing with primary Core-First duty
+  default_prompt: Use $core-first-orchestration as the primary-agent kernel. Apply Core-First yourself when architecture is material, load only triggered Skills/procedures JIT, ground prerequisites/surface authority, adapt execution to evidence, externalize a derived Working View only when useful, and route real-surface verification/review only when required.
+policy:
+  allow_implicit_invocation: true

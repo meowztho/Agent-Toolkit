@@ -1,0 +1,3 @@
+interface:
+  display_name: Agent Project Compiler
+  short_description: Compile durable project specs

@@ -1,0 +1,61 @@
+{
+  "skill_name": "core-first-verifier",
+  "schema_version": 1,
+  "evals": [
+    {
+      "id": "duplicate-consumer-rule",
+      "prompt": "The diff adds invoice rounding directly to two UI screens although the pricing owner already owns rounding.",
+      "expected_status": "FAIL",
+      "must_detect": [
+        "parallel/duplicated universal rule",
+        "canonical owner bypass"
+      ]
+    },
+    {
+      "id": "provider-contract-reuse",
+      "prompt": "A new storage provider implements the existing storage contract; callers remain unchanged and contract tests pass.",
+      "expected_status": "PASS",
+      "must_validate": [
+        "existing owner/contract reuse",
+        "no caller-specific business semantics"
+      ]
+    },
+    {
+      "id": "missing-evidence",
+      "prompt": "Only an implementation summary is supplied; no raw diff, authorities, or test output are available.",
+      "expected_status": "INCONCLUSIVE"
+    },
+    {
+      "id": "expectation-before-diff",
+      "prompt": "Verify a material architecture change. Requirement and authorities are available; the implementation diff can be withheld until after the expected owner/classification is derived.",
+      "expected_status": "PASS_OR_FAIL_FROM_COMPARISON",
+      "must_do": [
+        "freeze expected owner/path before diff",
+        "freeze expected classification before diff",
+        "compare implementation only after baseline freeze"
+      ]
+    },
+    {
+      "id": "diff-seen-before-baseline",
+      "prompt": "The verifier already saw the implementation diff in inherited context before it could derive the expected architecture.",
+      "expected_status": "PASS_FAIL_OR_INCONCLUSIVE_WITH_LIMITATION",
+      "must_report": [
+        "two-phase anti-anchoring limitation",
+        "must not claim expectation-before-diff occurred"
+      ]
+    },
+    {
+      "id": "baseline-repository-state-allowed",
+      "prompt": "The verifier needs pre-change repository files and project authorities to identify the existing canonical owner before reviewing the patch.",
+      "expected_status": "PASS_OR_FAIL_FROM_COMPARISON",
+      "must_allow": [
+        "baseline repository inspection",
+        "project authority reads"
+      ],
+      "must_withhold_until_phase_b": [
+        "change-under-review diff",
+        "implementer rationale"
+      ]
+    }
+  ]
+}

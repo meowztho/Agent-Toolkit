@@ -1,0 +1,220 @@
+{
+  "skill_name": "instructions",
+  "schema_version": 1,
+  "evals": [
+    {
+      "id": "jit-no-bulk-preload",
+      "prompt": "Compile a new product idea. The immediate decision is only how to classify the request and identify the first interview gaps.",
+      "expected": {
+        "root_orchestrator_active": true,
+        "load_all_references": false,
+        "load_compiler_guide": true,
+        "load_template_library": false
+      }
+    },
+    {
+      "id": "context-loss-minimal-rehydrate",
+      "prompt": "Resume a compiled project after major context compaction. PROJECT_INDEX and compact STATE exist and point to the current requirement.",
+      "expected": {
+        "trust_chat_memory_only": false,
+        "discover_current_state_first": true,
+        "use_project_index": true,
+        "reload_all_apc_references": false,
+        "load_only_active_authorities_and_procedures": true
+      }
+    },
+    {
+      "id": "template-jit-product-realization",
+      "prompt": "Generate only contracts/PRODUCT_REALIZATION.yaml using the compiled model.",
+      "expected": {
+        "load_legacy_runtime_templates_monolith": false,
+        "load_template_slice": "templates/REALIZATION_AND_SOURCE_INGEST.md",
+        "load_unrelated_template_groups": false
+      }
+    },
+    {
+      "id": "template-jit-app-flow",
+      "prompt": "Generate contracts/APP_FLOW.yaml for an already-modeled lifecycle.",
+      "expected": {
+        "load_legacy_runtime_templates_monolith": false,
+        "load_template_slice": "templates/FLOW_CONTENT_AND_E2E.md"
+      }
+    },
+    {
+      "id": "system-map-jit",
+      "prompt": "The product capability envelope is known. Resolve master systems and composition before producing SYSTEM_MAP.",
+      "expected": {
+        "load_system_model_slice": true,
+        "load_atlas_slice_without_trigger": false,
+        "load_all_composition_references": false
+      }
+    },
+    {
+      "id": "definition-driven-jit",
+      "prompt": "A second same-type catalog item should appear through the existing generic detail surface. Check the reusable definition model.",
+      "expected": {
+        "load_definition_driven_composition_slice": true,
+        "new_parallel_owner": false
+      }
+    },
+    {
+      "id": "verification-jit-evidence-only",
+      "prompt": "Audit whether current evidence supports a claimed milestone; no user-surface claim is being made.",
+      "expected": {
+        "load_evidence_completion_slice": true,
+        "load_surface_advanced_slice_without_trigger": false,
+        "load_all_delivery_verification": false
+      }
+    },
+    {
+      "id": "surface-verification-jit",
+      "prompt": "The claim is that the final normal-user surface matches its approved design and interaction requirements.",
+      "expected": {
+        "load_surface_advanced_verification": true,
+        "route_observable_product_verification_when_available": true,
+        "static_evidence_sufficient": false
+      }
+    },
+    {
+      "id": "architecture-companion-core-first",
+      "prompt": "During compilation a reusable cross-system capability owner is ambiguous and must be resolved before freezing architecture.",
+      "expected": {
+        "primary_loads_core_first_extension_architecture": true,
+        "apc_reference_replaces_core_first": false
+      }
+    },
+    {
+      "id": "plugin-maintenance-routing",
+      "prompt": "Refactor APC plugin references to reduce context cost without changing compiler semantics.",
+      "expected": {
+        "load_plugin_native_jit_architecture": true,
+        "file_count_limit_20": false,
+        "single_apc_orchestrator_preserved": true
+      }
+    },
+    {
+      "id": "legacy-monolith-is-redirect-only",
+      "prompt": "A stale internal link points to RUNTIME_TEMPLATES.md after v2.35.",
+      "expected": {
+        "legacy_file_is_authority": false,
+        "follow_compatibility_router_to_specific_slice": true,
+        "load_98kb_template_corpus": false
+      }
+    },
+    {
+      "id": "file-count-not-materiality",
+      "prompt": "The best JIT decomposition requires more than twenty supporting reference files but each has a distinct material trigger.",
+      "expected": {
+        "reject_due_to_20_file_limit": false,
+        "judge_by_procedural_ownership_trigger_and_context_cost": true
+      }
+    },
+    {
+      "id": "fresh-agent-reconstruction-selective-context",
+      "prompt": "A fresh agent must reconstruct the complete compiled project while APC references remain JIT.",
+      "expected": {
+        "hydrate_all_apc_references_up_front": false,
+        "read_handoff_and_project_authorities": true,
+        "load_reconstruction_procedure_when_material": true,
+        "complete_model_must_remain_reachable": true
+      }
+    },
+    {
+      "id": "multi-trigger-sequencing",
+      "prompt": "A turn needs interview closure first, then an architecture owner decision, then one acceptance artifact.",
+      "expected": {
+        "load_everything_concurrently": false,
+        "sequence_smallest_owner_set_per_next_decision": true,
+        "companion_core_first_at_architecture_boundary": true,
+        "load_single_needed_template_group": true
+      }
+    },
+    {
+      "id": "skill-lifecycle-vs-plugin-layout-owner",
+      "prompt": "Resolve a project-local specialist Skill requirement; no APC package-maintenance decision is involved.",
+      "expected": {
+        "load_skill_lifecycle_guide": true,
+        "load_plugin_native_jit_architecture_without_trigger": false,
+        "historical_20_file_limit": false
+      }
+    },
+    {
+      "id": "plugin-resource-snapshot-drift",
+      "prompt": "The APC root router names a canonical JIT reference, but skills__read returns Resource not found immediately after a plugin update. Account-plugin source readback shows the file exists in the current release.",
+      "expected": {
+        "classify_release_file_missing": false,
+        "classify_plugin_resource_snapshot_drift": true,
+        "rediscover_and_reread_router": true,
+        "legacy_redirect_becomes_policy_owner": false,
+        "claim_missing_procedure_loaded": false
+      }
+    },
+    {
+      "id": "binary-package-control-plane-root",
+      "prompt": "Compile a portable binary distribution whose runnable package root must not contain extra compiler metadata and which has no Git repository.",
+      "expected": {
+        "assume_git_repository": false,
+        "separate_control_plane_and_shippable_root": true,
+        "invent_git_revision": false,
+        "use_project_native_revision_identity": true
+      }
+    },
+    {
+      "id": "existing-authority-binding-no-duplicate-system-map",
+      "prompt": "An existing project already has a canonical responsibility/owner map from another procedure. APC needs the System/Owner semantic role for its package.",
+      "expected": {
+        "bind_existing_canonical_authority": true,
+        "create_second_normative_system_map": false,
+        "derived_projection_allowed_when_needed": true,
+        "projection_marked_non_authoritative": true
+      }
+    },
+    {
+      "id": "package-ready-pending-user-not-complete",
+      "prompt": "An autonomous compile has reconstructed the project and all reachable evidence, but one consequential user-owned interpretation cannot be answered without the user. Its impact is explicitly bounded.",
+      "expected": {
+        "invent_user_answer": false,
+        "package_ready_pending_user_allowed": true,
+        "product_complete": false,
+        "affected_transition_remains_blocked": true,
+        "independent_safe_work_may_continue": true
+      }
+    },
+    {
+      "id": "simple-project-artifact-minimality",
+      "prompt": "Compile a small coherent project whose vision, decisions, owner map and acceptance can remain unambiguous in a compact authority set. Existing external authorities already cover some roles.",
+      "expected": {
+        "force_one_file_per_concept": false,
+        "artifact_count_defines_completeness": false,
+        "reuse_existing_authorities": true,
+        "small_coherent_authorities_may_consolidate": true,
+        "fresh_agent_reconstruction_still_required": true
+      }
+    },
+    {
+      "id": "bound-goal-persists-through-milestones",
+      "prompt": "A project already has a canonical durable goal authority with the observable master outcome, scope, acceptance IDs and completion condition. APC binds it instead of duplicating GOAL.md. A weaker implementation agent has passed its first milestone and is about to stop, while required product outcomes remain unverified.",
+      "expected": {
+        "bind_existing_goal_only_if_full_contract_preserved": true,
+        "create_duplicate_goal_file": false,
+        "inline_master_outcome_in_goal_rehydration": true,
+        "milestone_pass_means_goal_complete": false,
+        "continue_to_next_admissible_stage": true,
+        "final_completion_requires_current_evidence": true
+      }
+    },
+    {
+      "id": "load-bearing-premise-conditional-admission",
+      "prompt": "A project's planned expansion relies on an unverified claim that its current approach works on representative inputs. A small pilot can test that claim; separate interface work does not depend on it. Compile the plan and acceptance boundary without inventing a user decision.",
+      "expected": {
+        "identify_dependent_premise_and_decision": true,
+        "predefine_disconfirming_observation_and_threshold": true,
+        "pilot_uses_relevant_baseline_and_representative_inputs": true,
+        "expansion_remains_conditional_on_qualifying_evidence": true,
+        "independent_admissible_work_continues": true,
+        "new_assumption_register_or_universal_stop_gate": false,
+        "treat_factual_test_as_user_owned_choice": false
+      }
+    }
+  ]
+}

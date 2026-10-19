@@ -1,0 +1,7 @@
+{
+  "legacy": true,
+  "status": "inactive",
+  "reason": "Retained because account plugin updates cannot delete files from an existing release.",
+  "canonical_router": "references/REFERENCE_INDEX.md",
+  "note": "APC v2.35 removed the historical Custom-GPT file-count routing model. Do not use this lookup as active policy or discovery authority."
+}

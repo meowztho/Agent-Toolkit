@@ -1,0 +1,33 @@
+{
+  "skill_name": "independent-review",
+  "schema_version": 1,
+  "evals": [
+    {
+      "id": "routine-change-no-review",
+      "prompt": "A one-line internal typo fix has focused tests and no material risk.",
+      "expected": {
+        "independent_review_required": false
+      }
+    },
+    {
+      "id": "high-risk-review",
+      "prompt": "A consequential implementation change affects production-critical state transitions and passed the primary agent's own checks.",
+      "expected": {
+        "independent_review_required": true,
+        "fresh_context_preferred": true,
+        "read_only": true,
+        "anti_anchored": true
+      }
+    },
+    {
+      "id": "observable-evidence-anti-anchoring",
+      "prompt": "A consequential UI workflow was exercised by observable-product verification, which reported VERIFIED and captured screenshots plus before/after runtime state. Perform independent review.",
+      "expected": {
+        "pass_raw_observable_runtime_evidence": true,
+        "pass_observable_verification_status_before_independent_derivation": false,
+        "pass_observable_verification_conclusion_before_independent_derivation": false,
+        "independent_reviewer_derives_outcome_itself": true
+      }
+    }
+  ]
+}
