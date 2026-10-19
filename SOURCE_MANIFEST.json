@@ -1,0 +1,76 @@
+{
+  "snapshot_date": "2026-10-19",
+  "components": [
+    {
+      "name": "Core-First Governance",
+      "version": "0.11.7",
+      "destination": "plugins/core-first-governance",
+      "source_kind": "Git working tree",
+      "source_revision": "df3f61033ee3d20e7e20424c697903520a2c4e56",
+      "source_dirty": false,
+      "file_count": 39
+    },
+    {
+      "name": "Agent Project Compiler",
+      "version": "2.36.1",
+      "destination": "plugins/agent-project-compiler",
+      "source_kind": "Git working tree",
+      "source_revision": "d47faea3a2beb25f2077d318f3f514ccbbcd9791",
+      "source_dirty": false,
+      "file_count": 55
+    },
+    {
+      "name": "RORE",
+      "version": "0.16.1",
+      "destination": "plugins/rore",
+      "source_kind": "Git working tree",
+      "source_revision": "a7446ee22fd3d51c23067382043b5acafd3f57f7",
+      "source_dirty": false,
+      "file_count": 90
+    },
+    {
+      "name": "Agent Workflow",
+      "version": "current working tree",
+      "destination": "workflow/agent-workflow",
+      "source_kind": "Git working tree",
+      "source_revision": "7a96bf73bce15fc85926548d087d1ab089baf97a",
+      "source_dirty": true,
+      "file_count": 11
+    },
+    {
+      "name": "Agent Blueprint",
+      "version": "0.1.0",
+      "destination": "plugins/agent-blueprint",
+      "source_kind": "workspace directory",
+      "file_count": 5
+    },
+    {
+      "name": "Runtime Debugger",
+      "version": "0.1.0",
+      "destination": "plugins/runtime-debugger",
+      "source_kind": "workspace directory",
+      "file_count": 8
+    },
+    {
+      "name": "Codex Luna Orchestrator",
+      "version": "0.1.1",
+      "destination": "plugins/codex-luna-orchestrator",
+      "source_kind": "installed plugin snapshot",
+      "file_count": 4
+    },
+    {
+      "name": "GameDev JIT Skills",
+      "version": "0.3.0",
+      "destination": "plugins/gamedev-jit-skills",
+      "source_kind": "verified workspace ZIP extraction",
+      "file_count": 162
+    },
+    {
+      "name": "GameDev Knowledge Handbook",
+      "version": "workspace snapshot",
+      "destination": "knowledge/gamedev",
+      "source_kind": "workspace documents",
+      "file_count": 12
+    }
+  ]
+}
