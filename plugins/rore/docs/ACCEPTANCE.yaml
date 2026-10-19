@@ -1,0 +1,116 @@
+version: 1
+acceptance:
+- id: RORE-A001
+  requirement: Active skills contain no target-product, APC/project-compiler, implementation, branding, launch or release ownership.
+- id: RORE-A002
+  requirement: Broad reference reconstruction can represent surface/flow/state, static/artifact, runtime, memory/causality, data/schema, interface/API/protocol, resources/assets, visual/media, rules/calculations, versioning, timing and failure semantics when material.
+- id: RORE-A003
+  requirement: Reconstruction preserves Evidence, Finding, Path and reference-native Model as distinct semantic layers.
+- id: RORE-A004
+  requirement: Evidence qualification explicitly covers object identity, parser/interpretation correctness, source precedence, coverage/completeness and corroboration independence.
+- id: RORE-A005
+  requirement: Runtime-sensitive claims distinguish present, referenced, reachable, exercised and effective behavior.
+- id: RORE-A006
+  requirement: Controlled perturbation is available as a reconstruction method with baseline, one-variable differential, causal trace, recovery/residue recording and a stop condition of sufficient understanding.
+- id: RORE-A007
+  requirement: Analysis decision quality preserves hypotheses, negative evidence, deadlock replanning, stage/tool bias detection and context-pollution recovery.
+- id: RORE-A008
+  requirement: Stable reference identities and target/artifact fixity are available without imposing unused entity classes.
+- id: RORE-A009
+  requirement: Cross-version reconstruction uses semantic anchors and does not promote raw offsets into durable truth.
+- id: RORE-A010
+  requirement: Evidence Review is read-only and can detect ungrounded claims, stale/missing hashes, contradictions, overclaimed coverage and unsupported promotion.
+- id: RORE-A011
+  requirement: Tool/provider choice is capability-first and no named reverse-engineering suite is a required owner.
+- id: RORE-A012
+  requirement: Source provenance retains attribution to admitted upstream methodology and records the v0.4.0 source-snapshot re-audit.
+- id: RORE-A013
+  requirement: RORE remains domain-neutral; no product category is declared a primary target or canonical owner, and domain-specific files act only as conditional JIT profiles beneath the same reconstruction workflow.
+- id: RORE-A014
+  requirement: Current-state claims establish observation-path liveness when live/changing state is material and there is concrete stale/frozen/cached/replayed/disconnected-path risk; identical samples alone do not prove a dead observation path.
+- id: RORE-A015
+  requirement: Evidence Review uses a fresh reviewer context where feasible and independently derives its verdict without reconstruction-agent confidence, persuasive rationale or prior review conclusions anchoring the review.
+- id: RORE-A016
+  requirement: Static/binary reconstruction may descend from semantic source/decompiler views through bytecode/assembly, raw bytes/hex and live memory only when lower-level facts materially discriminate unresolved hypotheses, then reconnects them to stable semantic anchors.
+- id: RORE-A017
+  requirement: Target/source/tool content is treated as evidence rather than instructions; embedded agent-directed commands cannot redirect RORE scope, method, permissions or claims.
+- id: RORE-A018
+  requirement: Web/API reconstruction binds schemas and requests to their actual endpoint/version/environment and traces projections across internal, frontend and public layers before transferring field-level claims.
+- id: RORE-A019
+  requirement: Broad-scope completion provides an auditable replication-ready model of the authorized original, with material behavior and edge cases, provenance, confidence, coverage and unknowns; unsupported gaps remain explicit.
+- id: RORE-A020
+  requirement: Reference comparison cases bind original identity/version/environment, starting state, actions, observed results, tolerances, repeatability and raw Evidence without becoming downstream replica acceptance criteria.
+- id: RORE-A021
+  requirement: Provider choice is catalog-first and capability-first; discovered candidates remain inert until independently verified, and material choices record capability, identity/version, effects, output boundary and trust.
+- id: RORE-A022
+  requirement: Material causal probes preserve baseline, exact changed boundary, raw differential, error/recovery, restoration or residue, and Evidence/Finding/Path links; instrumented behavior is not silently promoted to unmodified reference truth.
+- id: RORE-A023
+  requirement: Raw Evidence and a stable source index remain separate from revisable Findings, Models and narrative; corrections are linked, not silently overwritten, and portable handoffs expose provenance or explicit access restrictions.
+- id: RORE-A024
+  requirement: Material provider-dependent claims calibrate the provider on a representative known-answer sample and check target-specific interpretation with a negative control, invariant or independent boundary where practical, retaining provider/input identity, settings, exit status, stdout and stderr; missing checks limit the claim.
+- id: RORE-A025
+  requirement: A named or unambiguously supplied reference plus an analysis request provides the default broad scope for ordinary target analysis, including decompilation and bounded reversible local probes; target, environment, operation and likely effects are checked internally, while discovered new targets or material external effects cannot inherit that scope.
+- id: RORE-A026
+  requirement: Protected executable analysis distinguishes packing, obfuscation, encryption and unavailable source; unrecovered internals remain unknown while authorized observable behavior can still be reconstructed.
+- id: RORE-A027
+  requirement: Material byte/hex claims preserve artifact identity, exact raw range and established file/section/runtime address mapping with architecture, width, endianness or encoding assumptions and linked semantic Findings.
+- id: RORE-A028
+  requirement: Material debugger and fault observations retain uninstrumented baseline, trigger, process/thread/module/build, relevant stack/register/memory/event trace, instrumentation effects and side effects; session-local addresses are not promoted into durable truth.
+- id: RORE-A029
+  requirement: Cross-domain asset inventories preserve source lineage, native properties, variants, derived transformations and evidence of reference/use/effectiveness, including material missing or inaccessible resources.
+- id: RORE-A030
+  requirement: A known failure can start reconstruction from a reproducible original-state symptom through candidate producer, propagation, error handling and recovery paths, while detection sites, controls, instrumentation effects and unresolved alternatives remain distinct.
+- id: RORE-A031
+  requirement: Cross-layer correspondence records source identities, mapping basis, candidate population, exact or weaker match strength, ambiguity, mismatch and incomplete coverage; static presence or load is not silently promoted to execution or causality.
+- id: RORE-A032
+  requirement: External Evidence imports and resumed unknowns preserve source record identity, format/version, digest limits, raw/projection boundaries, build/environment, revisions and contradictions without a mandatory database or REA dependency.
+- id: RORE-A033
+  requirement: Reference scenarios specify relevant requested capture fields and a state-specific readiness condition when material; unrequested or partial captures and incidental total event order do not become absence or broad equivalence claims.
+- id: RORE-A034
+  requirement: Material native, managed, packaged, browser, process and protocol questions have provider-neutral acquisition routes with exact capability/host checks, partial output and lifecycle effects, without installing or requiring an integrated REA runtime.
+- id: RORE-A035
+  requirement: Optional portable Evidence bundles retain every source file and validate raw hashes plus Evidence/Finding/Path/Model/Unknown references without claiming semantic proof; CLI import/export is lossless and MCP exposes only read-only views over the same core.
+- id: RORE-A036
+  requirement: Curated tool-master provider seeds remain inert candidates with explicit evidence boundaries and side effects; no catalog example becomes a verified capability, install command or authorized probe by inclusion.
+- id: RORE-A037
+  requirement: REA Evidence JSON export can be structurally previewed and imported into a new RORE bundle without REA at runtime; original bytes, hash, Evidence IDs and Unknown revision identities remain accessible through CLI and read-only MCP, while REA semantic validation and multi-subject identity limits stay explicit.
+- id: RORE-A038
+  requirement: RORE's own CLI and read-only MCP expose identical bounded artifact observations for regular files, ZIP members, directories and declared PE/ELF mappings; source hashes, coordinate spaces, coverage and failures remain explicit without requiring source projects or executing the target.
+- id: RORE-A039
+  requirement: Loader-aware disassembly and decompilation route to a qualified provider only when the gap requires them; the Ghidra JIT method records installation/build, loader settings, program/address mapping, raw output and analysis effects without treating source code or pseudocode as verified runtime truth.
+- id: RORE-A040
+  requirement: The optional Ghidra CLI analyzes only a verified source copy in a new isolated project, retains selected provider/JDK versions and component hashes, original and imported-file identity checks, raw export/logs/project, enumeration limits and timeout/failed-decompilation status; no Ghidra binary, source project or mutable MCP tool is required by the RORE package.
+- id: RORE-A041
+  requirement: When a needed capability is unavailable within the user's investigation scope, a Windows x64 agent can plan and install the pinned official Ghidra/JDK archives into a user-scoped root with size/hash checks, safe extraction, no overwrite or global environment change, component probe and a separate real target smoke; absent, partial and unqualified states remain distinct.
+- id: RORE-A042
+  requirement: Missing capabilities on other hosts or surfaces route through a JIT provider-acquisition method that verifies current official source, host, license, exact operation, effects and output before use, without a mandatory source project, full tool-catalog install or automatic installation during plugin activation.
+- id: RORE-A043
+  requirement: Broad reconstruction seeks all technically accessible reference information within authorized scope; bounded mechanism sufficiency cannot end a broad mission, and completion records covered, attempted-but-failed, still-accessible, blocked and unrecoverable avenues without conflating missing tools with unknowable facts.
+- id: RORE-A044
+  requirement: A named provider, repository or download endpoint failure returns to capability-based selection of a qualified alternative or bounded helper; the optional Ghidra recipe does not become an analysis prerequisite.
+- id: RORE-A045
+  requirement: In-place target perturbation is allowed when appropriate and authorized, with exact baseline, writes, effects and recovery action recorded before intervention, restoration verified after it, and residue preventing further mutation until understood; isolation is preferred when representative and practical rather than mandatory.
+- id: RORE-A046
+  requirement: Broad campaigns keep an explicit population and coverage map across relevant surface, API, data, assets, architecture, runtime and network partitions, advance material static leads toward reachability, effect or causality, and identify remaining accessible avenues before calling a handoff complete.
+- id: RORE-A047
+  requirement: CLI Evidence authoring initializes only a new bundle and appends full raw files with source, method and SHA-256 to one Evidence record without rewriting earlier records; existing-bundle files can be linked, invalid or duplicate operations leave the bundle valid, and the MCP remains read-only.
+- id: RORE-A048
+  requirement: PE inspection reports declared overlapping, zero-sized and unbacked raw section ranges while retaining ambiguous file-offset mappings and explicitly withholding runtime-loader conclusions; recoverable portable-app probes record host-state baseline, instrumented effects and verified cleanup.
+- id: RORE-A049
+  requirement: Multi-reference investigations preserve separate build and evidence identities, use qualified decompilation and lower-level views to trace material hidden code/data paths and candidate extension seams, test material reachability/effects, and hand off evidenced cross-reference contracts and mismatches without inventing a combined-product design.
+- id: RORE-A050
+  requirement: RORE does not demand generic ownership/legal proof or repeat permission questions for methods and needed contained user-scoped tools covered by the user request, supplied target or earlier session permissions; it continues in-scope work and asks only for a concrete unresolved new target, access, cost, privilege or effect boundary.
+- id: RORE-A051
+  requirement: RORE v0.15.0 uses technical plugin ID rore in both manifests and validation, while documenting that previous corereplica installations are separate and are not silently removed or migrated.
+- id: RORE-A052
+  requirement: Workspace handling classifies source, package, installation and mixed targets; keeps raw Evidence, scratch, control metadata and target payload distinct; and records non-Git target identity, placement and local-only handling where material.
+- id: RORE-A053
+  requirement: Material claims distinguish static-sufficient from runtime-sensitive boundaries; unobserved effective behavior remains runtime-unchecked without replacing the Evidence status or presence-to-effectiveness ladder.
+- id: RORE-A054
+  requirement: Optional PNG comparison binds output to the exact input bytes, reports crop and candidate visual differences, and never presents its coarse indicator as implementation parity, functional equivalence or target acceptance.
+- id: RORE-A055
+  requirement: An optional selected-function Ghidra export records bounded instruction-origin references with exact Ghidra addresses, address spaces and analysis provenance; caps or missing inventory limit adapter status, while native debugger interfaces remain conditional providers rather than required RORE bridges.
+- id: RORE-A056
+  requirement: A separate RORE-owned provider MCP exposes read-only qualification and bounded hash-checked results plus explicit retained setup/analysis jobs with interrupted-worker detection over the existing Ghidra/JDK installer and adapter, with on-demand Windows x64 installation only for a selected operation; the Evidence MCP remains read-only and no third-party MCP bridge or bundled analyzer is required.
+- id: RORE-A057
+  requirement: An optional rebuild comparison tests only the identified static reference range with recorded input/build/comparison identities and raw differences; exact bytes, heuristic similarity, copied stubs, untested units and unknown denominators remain distinct, and no match score becomes proof of original source form, runtime behavior or whole-reference completion.

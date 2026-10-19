@@ -1,0 +1,31 @@
+version: 1
+flows:
+- id: FLOW_GAP_TO_REFERENCE_TRUTH
+  trace:
+  - RORE_ORCHESTRATION:classify target/surface and current knowledge gap
+  - RORE_ORCHESTRATION:select required evidence boundary and analysis capability
+  - RORE_RECONSTRUCTION:acquire or derive evidence
+  - RORE_RECONSTRUCTION:qualify identity/provenance/coverage
+  - RORE_RECONSTRUCTION:connect Evidence to Findings and Paths
+  - RORE_RECONSTRUCTION:synthesize reference-native model and explicit unknowns
+  forbidden:
+  - selecting a named tool before the required capability is understood
+  - translating reference findings into target-product requirements
+  - redesigning observed reference structure for implementation convenience
+- id: FLOW_PERTURBATION_TO_CAUSAL_PATH
+  trace:
+  - RORE_RECONSTRUCTION:establish baseline and hypothesis
+  - RORE_RECONSTRUCTION:vary one material authorized dimension
+  - RORE_RECONSTRUCTION:observe differential and residue
+  - RORE_RECONSTRUCTION:trace effect to stable static/data/runtime anchors
+  - RORE_RECONSTRUCTION:restore or record changed state
+  - RORE_RECONSTRUCTION:record bounded Evidence Finding Path
+  forbidden:
+  - impact maximization after the mechanism is sufficiently understood
+  - presenting a successful mutation as proof of ownership without causal corroboration
+- id: FLOW_REFERENCE_REVIEW
+  trace:
+  - RORE_EVIDENCE_REVIEW:read current Evidence Findings Paths Models
+  - RORE_EVIDENCE_REVIEW:verify fixity identity traceability contradictions and coverage
+  - RORE_EVIDENCE_REVIEW:report unsupported or overstrong claims
+  - RORE_RECONSTRUCTION:perform any subsequent correction in a separate analysis pass

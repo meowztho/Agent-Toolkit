@@ -1,0 +1,32 @@
+version: 1
+capabilities:
+- id: CAP_ROUTE_ANALYSIS
+  owner: RORE_ORCHESTRATION
+  contract: Route by target/surface plus knowledge gap plus evidence boundary plus available capability, not by a hard-coded tool or fixed stage chain.
+- id: CAP_RECONSTRUCT_REFERENCE
+  owner: RORE_RECONSTRUCTION
+  contract: Recover and connect behavior, structure, state, data, flows, protocols, assets, mechanics, timing, failure and environment semantics of the reference.
+- id: CAP_QUALIFY_EVIDENCE
+  owner: RORE_RECONSTRUCTION
+  contract: Keep claim strength within the proven evidence boundary; preserve raw, normalized and derived views distinctly.
+- id: CAP_CAUSAL_PROBING
+  owner: RORE_RECONSTRUCTION
+  contract: Use controlled reversible perturbation when it has higher information value than passive observation; stop at sufficient mechanism understanding.
+- id: CAP_CROSS_VERSION_RECONSTRUCTION
+  owner: RORE_RECONSTRUCTION
+  contract: Re-resolve semantic anchors across versions rather than transplanting addresses/offsets or stale inferred structure.
+- id: CAP_EVIDENCE_GRAPH_REVIEW
+  owner: RORE_EVIDENCE_REVIEW
+  contract: Audit Evidence→Finding→Path traceability, fixity, contradictions, coverage and promotion strength without changing the analyzed target or repairing findings in the same pass.
+- id: CAP_PORTABLE_EVIDENCE_BUNDLE
+  owner: RORE_RECONSTRUCTION
+  contract: Keep a versioned optional Evidence index linked to complete raw files, with CLI and read-only MCP as transport adapters rather than independent truth owners.
+- id: CAP_OFFLINE_ARTIFACT_ACQUISITION
+  owner: RORE_RECONSTRUCTION
+  contract: Acquire bounded regular-file, ZIP, directory and declared PE/ELF layout observations with source identity and exact coverage; deeper analyzers remain qualified providers.
+- id: CAP_OPTIONAL_DEEP_STATIC_ACQUISITION
+  owner: RORE_RECONSTRUCTION
+  contract: Invoke a separately qualified native-code analyzer on an exact copied target through a bounded provider adapter, accessible by CLI or RORE-owned provider MCP jobs, retaining import identity, raw project/export/logs, analysis limits and explicit partial outcomes without promoting decompiler output to Reference Truth.
+- id: CAP_ON_DEMAND_PROVIDER_SETUP
+  owner: RORE_RECONSTRUCTION
+  contract: When the selected evidence capability is unavailable, qualify or provision only its needed provider; use a pinned portable Windows Ghidra/JDK recipe through CLI or explicit RORE-owned MCP jobs where tested and an official-source agent-mediated route elsewhere, retaining version, artifact identity, effects and exact-operation proof.

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "rore",
+  "version": "0.16.1",
+  "description": "RORE: domain-neutral replication-oriented reverse engineering that reconstructs authorized systems into evidence-grounded Reference Truth without compiling or building a target product.",
+  "author": {
+    "name": "RORE contributors"
+  },
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "RORE",
+        "shortDescription": "Deep reference reconstruction",
+        "longDescription": "Domain-neutral Replication-Oriented Reverse Engineering for authorized digital systems. RORE routes by unresolved knowledge, evidence boundary and required capability rather than by product domain, combining surface, artifact, static, runtime, memory, data, protocol, external-research and controlled perturbation methods as material. It reconstructs the reference's own behavior, structure, state, data and causal paths while preserving evidence boundaries, contradictions and unknowns, and stops before target-product design, implementation, verification or release.",
+        "developerName": "RORE contributors",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Interactive"
+        ],
+        "defaultPrompt": [
+          "Investigate the reference target named or supplied in my request as deeply as technically feasible. Use my request and session context as the analysis scope; preserve its logic, state and structure as evidence-grounded Reference Truth.",
+          "Continue this RORE investigation using the smallest high-information analysis method for the current knowledge gap.",
+          "Review this RORE evidence graph and identify unsupported claims, contradictions, missing coverage and the next highest-information probes."
+        ]
+      }
+    }
+  }
+}

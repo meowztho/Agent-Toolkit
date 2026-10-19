@@ -1,0 +1,13 @@
+[project]
+name = "rore-evidence-runtime"
+version = "0.16.1"
+description = "Local RORE Evidence, artifact and optional provider runtime with MCP adapters"
+requires-python = ">=3.10"
+dependencies = ["mcp==2.3.0"]
+
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["rore_runtime"]

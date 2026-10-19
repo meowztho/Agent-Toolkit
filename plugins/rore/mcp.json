@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "rore-evidence": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "run",
+        "--project",
+        "${PLUGIN_ROOT}",
+        "--locked",
+        "python",
+        "${PLUGIN_ROOT}/scripts/rore_mcp.py"
+      ],
+      "cwd": "${PLUGIN_ROOT}"
+    },
+    "rore-providers": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "run",
+        "--project",
+        "${PLUGIN_ROOT}",
+        "--locked",
+        "python",
+        "${PLUGIN_ROOT}/scripts/rore_provider_mcp.py"
+      ],
+      "cwd": "${PLUGIN_ROOT}"
+    }
+  }
+}

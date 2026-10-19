@@ -1,0 +1,39 @@
+version: 1
+routes:
+  vision: docs/USER_VISION.md
+  interview: docs/INTERVIEW_LEDGER.md
+  decisions: docs/DECISION_COMPENDIUM.md
+  systems: docs/SYSTEM_MAP.yaml
+  capabilities: docs/CAPABILITY_GRAPH.yaml
+  integration: docs/SYSTEM_INTEGRATION.yaml
+  guardrails: docs/ARCHITECTURE_GUARDRAILS.yaml
+  acceptance: docs/ACCEPTANCE.yaml
+  handoff: docs/CONTEXT_HANDOFF.md
+  provenance: SOURCE_PROVENANCE.md
+  validator: scripts/validate_project.py
+  evidence_bundle: docs/EVIDENCE_BUNDLE_V1.md
+  broad_campaign: skills/rore-orchestration/references/BROAD_COVERAGE_CAMPAIGN.md
+  multi_reference_seams: skills/rore-reconstruction/references/MULTI_REFERENCE_EXTENSION_SEAMS.md
+  provider_seeds: skills/rore-reconstruction/references/PROVIDER_SEEDS.md
+  evidence_cli: scripts/rore.py
+  optional_png_diff: scripts/rore_imgdiff.py
+  evidence_mcp: scripts/rore_mcp.py
+  rea_evidence_bridge: rore_runtime/rea_bridge.py
+  native_artifact_tools: docs/NATIVE_ARTIFACT_TOOLS.md
+  native_artifact_core: rore_runtime/artifact_tools.py
+  binary_layout_core: rore_runtime/binary_layout.py
+  ghidra_conditional_method: skills/rore-reconstruction/references/GHIDRA_STATIC_PROVIDER.md
+  ghidra_provider_adapter: docs/GHIDRA_PROVIDER_ADAPTER.md
+  ghidra_provider_cli: scripts/rore_ghidra.py
+  ghidra_provider_core: rore_runtime/ghidra_adapter.py
+  ghidra_export_script: providers/ghidra/ROREExport.java
+  provider_setup_method: skills/rore-reconstruction/references/PROVIDER_PROVISIONING.md
+  provider_setup_guide: docs/PROVIDER_SETUP.md
+  provider_setup_cli: scripts/rore_setup.py
+  provider_setup_core: rore_runtime/provider_setup.py
+  provider_mcp: scripts/rore_provider_mcp.py
+  provider_jobs: rore_runtime/provider_jobs.py
+skills:
+  orchestration: skills/rore-orchestration/SKILL.md
+  reconstruction: skills/rore-reconstruction/SKILL.md
+  evidence_review: skills/rore-evidence-review/SKILL.md

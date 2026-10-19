@@ -1,0 +1,38 @@
+version: 1
+guardrails:
+- id: RORE-G001
+  rule: RORE ends at qualified Reference Truth; target-product decisions, project compilation, implementation, replica acceptance and release are out of scope.
+- id: RORE-G002
+  rule: Reference-native structure must not be normalized, simplified or redesigned merely to make later implementation easier.
+- id: RORE-G003
+  rule: Claim strength must not exceed the strongest evidence boundary actually proven.
+- id: RORE-G004
+  rule: Parseability, plausible names, decompiler output or LLM annotations do not by themselves establish object identity or runtime truth.
+- id: RORE-G005
+  rule: Partial correctness does not establish population completeness; corroboration is independent only when material failure assumptions differ.
+- id: RORE-G006
+  rule: Present, referenced, reachable, exercised and effective are distinct runtime states.
+- id: RORE-G007
+  rule: Named tools are providers. Missing a preferred tool does not imply the analysis capability is unavailable until alternatives have been checked.
+- id: RORE-G008
+  rule: Raw evidence, normalized views and model-generated or analyst-derived interpretations remain separately traceable.
+- id: RORE-G009
+  rule: Negative evidence, contradictions and failed probes are preserved when they narrow the model; unknown remains unknown.
+- id: RORE-G010
+  rule: Controlled perturbation is an epistemic method. Its stop condition is sufficient mechanism understanding, not exploit impact or persistence.
+- id: RORE-G011
+  rule: Memory addresses, offsets, registers and temporary mutations are session/build-local evidence unless independently re-established; durable conclusions prefer semantic identities and causal relationships.
+- id: RORE-G012
+  rule: Public research may discover or explain mechanisms but cannot silently override target-local evidence for target-specific claims.
+- id: RORE-G013
+  rule: Evidence review is read-only with respect to the target and current reconstruction claims during the review pass; it reports required corrections rather than silently repairing what it judges.
+- id: RORE-G014
+  rule: Analysis state is bound to the strongest practical target identity such as content hash, build, revision, environment or evidence-run identity.
+- id: RORE-G015
+  rule: Authorization to analyze, retain, share/version-control, include and redistribute material are separate decisions.
+- id: RORE-G016
+  rule: Reference comparison cases describe evidenced behavior of the original and do not assign target-product acceptance or release authority to RORE.
+- id: RORE-G017
+  rule: Raw observations and source identities are never silently replaced by generated narrative or corrected Findings; derived views cite their Evidence and may be revised with provenance.
+- id: RORE-G018
+  rule: A user request to analyze a named or supplied reference is the default broad scope basis for that target; earlier session permissions persist, but tool discovery alone does not expand scope to a new target, account, environment or material external effect.

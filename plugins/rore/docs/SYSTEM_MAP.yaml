@@ -1,0 +1,13 @@
+version: 1
+systems:
+- id: RORE_ORCHESTRATION
+  responsibility: Select the next reverse-engineering method from the target/surface, current knowledge gap, required evidence boundary and actually available capabilities; check the exact authorized action boundary and detect deadlock or analysis bias without becoming a second reconstruction owner.
+  canonical_owner: skills/rore-orchestration/SKILL.md
+- id: RORE_RECONSTRUCTION
+  responsibility: Acquire, calibrate, interpret, correlate and synthesize authorized reference evidence into Findings, Paths, reference-native models and grounded reference comparison cases while preserving raw/projection separation, provenance, uncertainty, contradictions and original semantics.
+  canonical_owner: skills/rore-reconstruction/SKILL.md
+- id: RORE_EVIDENCE_REVIEW
+  responsibility: Independently and read-only audit claim grounding, evidence fixity, identity, coverage, corroboration independence, contradictions, hypothesis resurrection and completeness claims.
+  canonical_owner: skills/rore-evidence-review/SKILL.md
+external_providers:
+  note: Tools, MCPs, debuggers, decompilers, browsers, packet analyzers, scripts and public sources are providers or evidence sources, not RORE responsibility owners.
