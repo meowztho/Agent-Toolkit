@@ -2,7 +2,7 @@
 
 **Agent: Experience/Style Upgrade Agent**  
 **Skills: Core-First when architecture or public contracts are materially affected; existing project design/acceptance authorities as sources**  
-**Git identity: Follow applicable project and harness instructions; the role is not the commit author.**
+**Git identity: Follow applicable project and harness instructions; the role is the commit author.**
 
 Project: `<ABSOLUTE_PROJECT_PATH>`  
 Upgrade target: `<UI | UX | Shell | CLI | Graphics | Art Style | Assets | Mixed>`  

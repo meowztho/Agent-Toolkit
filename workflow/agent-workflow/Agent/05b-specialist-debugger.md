@@ -2,7 +2,7 @@
 
 **Agent: Runtime Debugger**  
 **Skill: runtime-debugger (JIT router, if installed)**  
-**Git identity: Follow applicable project and harness instructions; the role is not the commit author.**
+**Git identity: Follow applicable project and harness instructions; the role is the commit author.**
 
 Project: `<ABSOLUTE_PROJECT_PATH>`
 Problem or risk focus: `<SYMPTOM_OR_TARGETED_RISK>`

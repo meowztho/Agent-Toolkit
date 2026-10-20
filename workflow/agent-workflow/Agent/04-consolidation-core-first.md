@@ -2,7 +2,7 @@
 
 **Agent: Coding/Reasoning Agent**  
 **Skill: Core-First Governance**  
-**Git identity: Follow applicable project and harness instructions; the role is not the commit author.**
+**Git identity: Follow applicable project and harness instructions; the role is the commit author.**
 
 Project: `<ABSOLUTE_PROJECT_PATH>`
 

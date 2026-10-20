@@ -2,7 +2,7 @@
 
 **Agent: Architecture/Planning Agent**  
 **Skill: Agent Project Compiler (APC); Core-First JIT when materially relevant**  
-**Git identity: Follow applicable project and harness instructions; the role is not the commit author.**
+**Git identity: Follow applicable project and harness instructions; the role is the commit author.**
 
 Project: `<ABSOLUTE_PROJECT_PATH>`
 

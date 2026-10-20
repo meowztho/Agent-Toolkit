@@ -2,7 +2,7 @@
 
 **Agent: Critical Reviewer**  
 **Skills: Core-First Verifier when architecture is material; Independent Review when justified; Observable Product Verification when real user outcomes are material**  
-**Git identity: Follow applicable project and harness instructions; the role is not the commit author.**
+**Git identity: Follow applicable project and harness instructions; the role is the commit author.**
 
 Project: `<ABSOLUTE_PROJECT_PATH>`
 

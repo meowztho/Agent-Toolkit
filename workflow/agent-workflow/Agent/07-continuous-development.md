@@ -2,7 +2,7 @@
 
 **Agent: Development Agent**  
 **Skill: Core-First when materially relevant; APC/Blueprint are project sources**  
-**Git identity: Follow applicable project and harness instructions; the role is not the commit author.**
+**Git identity: Follow applicable project and harness instructions; the role is the commit author.**
 
 Project: `<ABSOLUTE_PROJECT_PATH>`
 Current goal: `<FEATURE_OR_FIX>`
