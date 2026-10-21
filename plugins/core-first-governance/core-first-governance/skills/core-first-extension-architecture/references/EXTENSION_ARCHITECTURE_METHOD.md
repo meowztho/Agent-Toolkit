@@ -260,7 +260,7 @@ Providers may call external APIs but do not own order state.
 `SYS-STORAGE → CAP-STORAGE-BACKEND → Memory/File/PostgreSQL → same library API`
 
 ### AI system
-`SYS-INFERENCE → CAP-MODEL-PROVIDER → OpenAI/Anthropic/DeepSeek/MiniMax/Kimi/local`
+`SYS-INFERENCE → CAP-MODEL-PROVIDER → OpenAI/Anthropic/DeepSeek/Kimi/local`
 
 ### Game origin case
 Shared game systems → capabilities/modules → content composition → builder/import/mod convergence. This is only one case study.
