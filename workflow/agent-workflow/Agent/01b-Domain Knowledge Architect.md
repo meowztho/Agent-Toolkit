@@ -95,6 +95,33 @@ Derive a **candidate system map** from the intended outcomes and workflows, not 
 
 Keep this map advisory. A domain convention is a discovery hypothesis, not a user-approved product requirement or proof that a system exists. If no concrete project is supplied, provide only reusable domain knowledge and questions for selecting systems later. Revisit the map when project intent or observed behavior changes.
 
+### Cross-cutting implementation patterns and practical decision rules
+
+For software-intensive domains, derive a **practical pattern and decision guide** from the domain's actual requirements and established engineering practice. Explain recurring implementation choices at the level where a human can recognize a problem and select an appropriate solution. This complements the system taxonomy; it is not another framework, a compulsory architecture, or a substitute for inspecting an existing codebase.
+
+Investigate relevant patterns such as:
+
+- **Data shapes and access:** single record/object; list or array for ordered collections; map/dictionary for keyed lookup; set for uniqueness; tree or graph for hierarchical/networked relationships. Explain access/update needs, not merely item count.
+- **Types and behavior:** functions, modules, classes, composition, components, data-oriented/ECS approaches, and inheritance where justified. Having behavior does not by itself require a class.
+- **State and lifecycle:** state variables, explicit transitions/finite-state machines, ownership, guards, commands, and lifecycle hooks.
+- **Coordination and reactions:** direct calls, managers/services, events/message buses, ordering, failure handling, and authoritative state changes.
+- **Identity and persistence:** in-memory references versus stable IDs, definitions versus instances, serializable data, save/reload, and migrations.
+- **Execution and performance:** game loops, fixed/variable steps, schedulers, scene graphs, object pooling, and resource ownership when applicable.
+- **Data-driven design:** separating configuration/content from rules, validating external data, and avoiding hard-coded per-type branches when real variation warrants it.
+
+For each **applicable major pattern or decision family**, produce a compact, human-readable decision card:
+
+1. **Recognize:** Which concrete problem or requirement suggests considering it?
+2. **Choose:** A short rule of thumb, including when a simpler option is sufficient.
+3. **Example:** Minimal domain-specific pseudocode or code, plus a small real workflow showing how it fits with surrounding systems.
+4. **Alternative / tradeoff:** When to choose another structure or pattern; complexity and coupling costs.
+5. **Failure and check:** A typical misuse and an observable verification question or test.
+6. **Status:** Established principle, context-dependent recommendation, or project-specific proposal; cite sources where available.
+
+Use concrete examples for non-experts, but never present shortcuts as universal laws. In particular, neither every collection needs an array, nor every behavior a class, nor every subsystem a manager, nor every interaction an event. An engine may already own the update loop. Stable IDs are often useful for persistence but are not universally preferable to runtime references. Components do not make inheritance categorically wrong; pooling must address a demonstrated allocation/performance concern. Distinguish components from full ECS architectures. Name transactional/event-ordering risks where relevant.
+
+Select patterns according to the domain; do not force game-development terminology, JavaScript, or implementation-specific constructs onto unrelated domains. If no software implementation is relevant, provide the domain's corresponding practical decision heuristics instead. Do not invent implementation details for a project that was not inspected.
+
 ## 3. Create a Human-Readable Knowledge Handbook
 
 Produce a central handbook and a modular collection of domain-specific knowledge chapters.
@@ -210,7 +237,7 @@ Correct demonstrated defects, clarify ownership, eliminate genuine duplication, 
 
 Produce a compact, durable handoff for a new agent, preserving validated behavior, relevant contracts, discoveries, risks, and creative opportunities.
 
-Additionally, create **one focused analysis prompt for every major domain category**.
+Additionally, create **one focused analysis prompt for every major domain category**. For software-intensive domains, include one reusable **pattern-choice prompt**: given a concrete requirement and an existing codebase, compare the smallest applicable data structure or coordination pattern with alternatives, locate the authoritative owner, identify existing reusable mechanisms, and justify the choice with a testable example. Do not require a refactor without evidence.
 
 Keep prompts concise, self-contained, and directly reusable.
 
@@ -251,6 +278,7 @@ Suggested artifacts:
 - `AREA_PROMPTS.md` — Focused prompts for individual system categories.
 - `SYSTEM_AUDIT_MATRIX.md` — Evidence, status, and verification framework.
 - `PRACTICAL_INSIGHTS.md` — Findings derived from real implementations.
+- `IMPLEMENTATION_PATTERNS.md` — For software-intensive domains: practical decision cards (recognition rule, minimal code/pseudocode, alternatives, limitations, test) for relevant recurring patterns. This may be a handbook section instead if short.
 - `SOURCES.md` — References, versions, provenance, and evidence limitations.
 - `PROJECT_SYSTEM_NEEDS.md` — Only when a concrete project or use case was supplied: candidate system needs, dependency/build order, a smallest end-to-end proof, source links, and unresolved decisions for APC.
 
@@ -258,7 +286,7 @@ Adapt filenames, grouping, and file count to the actual subject.
 
 Avoid redundant documents and unnecessary fragmentation.
 
-Provide clear links between chapters and a central navigation entry point.
+Provide clear links between chapters and a central navigation entry point. Link the implementation pattern guide from the handbook when present; clearly distinguish reusable choices from project requirements.
 
 In the central entry point, link any `PROJECT_SYSTEM_NEEDS.md` and state which project/use case it describes. In that file, separate user-stated intent, observed project facts, domain-derived proposals, and unknowns. Cite the relevant handbook sections and evidence rather than copying the full catalog. State explicitly that APC must reconcile the candidates with user intent and existing project authorities before treating them as scope or plan.
 
@@ -281,6 +309,7 @@ Before completion, verify:
 11. Are missing information and evidence limitations explicitly identified?
 12. Does the package remain useful across different projects and implementations within the domain?
 13. If project context was supplied, can APC trace each proposed system to an intended outcome, its dependencies, and its evidence or uncertainty?
+14. For a software-intensive domain, can a non-expert answer common 'which structure/pattern and why?' questions using concrete examples, tradeoffs, cautions, and checks rather than a bare terminology list?
 
 Correct demonstrated inconsistencies and material knowledge gaps before finalizing.
 
