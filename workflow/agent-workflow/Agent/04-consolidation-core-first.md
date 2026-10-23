@@ -14,6 +14,7 @@ First inspect repository root, instructions, Git status, relevant diffs, APC aut
 - Identify genuine duplication, parallel state/rule ownership, broken integration, and underlying defects.
 - Prefer reuse, configuration, correction, simplification, and removal before new mechanisms.
 - Keep changes minimal, reversible, compatible with relevant contracts, and scoped to actual causes.
+- Resolve confirmed APC guard/intent tickets at the canonical code owner. Where useful, include the **confirmed technical reason** in failure diagnostics, preserve existing error contracts, and test allowed/rejected paths and relevant build modes; do not add guards solely as documentation.
 - Preserve other people's changes and required behavior; do not silently rewrite product requirements.
 - Run targeted tests and relevant real-runtime/visual interaction checks when required by the claims.
 - When a necessary debugger, editor, profiler, runtime environment, or reference asset is missing, request the specific capability, its purpose, and any feasible alternative; do not silently substitute weaker evidence or block on optional tools.
